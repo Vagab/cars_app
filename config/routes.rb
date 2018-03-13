@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resources :cars
+    # TODO: read about nesting routes 'articles'
+  end
+
+  resources :cars, only: [:index, :show]
+
+  root 'cars#index'
 end

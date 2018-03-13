@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313074554) do
+ActiveRecord::Schema.define(version: 20180313175814) do
+
+  create_table "admin_cars", force: :cascade do |t|
+    t.string "manufactuture"
+    t.string "model"
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cars", force: :cascade do |t|
-    t.string "model"
     t.string "manufacture"
     t.integer "year"
+    t.string "model"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

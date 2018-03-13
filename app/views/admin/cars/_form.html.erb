@@ -1,10 +1,10 @@
-<%= form_with(model: admin_car, local: true) do |form| %>
-  <% if admin_car.errors.any? %>
+<%= form_for([:admin, car]) do |form| %>
+  <% if car.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(admin_car.errors.count, "error") %> prohibited this admin_car from being saved:</h2>
+      <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
 
       <ul>
-      <% admin_car.errors.full_messages.each do |message| %>
+      <% car.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :manufactuture %>
-    <%= form.text_field :manufactuture, id: :admin_car_manufactuture %>
+    <%= form.label :manufacture %>
+    <%= form.text_field :manufacture, id: :car_manufacture %>
   </div>
 
   <div class="field">
     <%= form.label :model %>
-    <%= form.text_field :model, id: :admin_car_model %>
+    <%= form.text_field :model, id: :car_model %>
   </div>
 
   <div class="field">
     <%= form.label :year %>
-    <%= form.number_field :year, id: :admin_car_year %>
+    <%= form.number_field :year, id: :car_year %>
   </div>
 
   <div class="actions">
