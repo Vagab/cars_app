@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   end
 
   resources :cars, only: [:index, :show]
+  namespace :admin do
+    resources :articles
+  end
+  resources :articles, only: [:show]
 
   root 'cars#index'
 end
