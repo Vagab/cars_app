@@ -2,29 +2,33 @@ class Admin::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def show
-    @article = Articles.find(params[:id])
+    @car = Car.find(params[:car_id])
+    @article = Article.find(params[:id])
   end
 
   def new
+    @car = Car.find(params[:car_id])
     @article = Article.new
   end
 
   def index
-    @article = Article.all
+    @car = Car.includes(:articles).find(params[:car_id])
   end
 
   def create
-    @article = Article.new(article_params)
+    @car = Car.find(params[:car_id])
+    @article = @car.articles.new(article_params)
 
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to admin_car_article_path(@article, @car), notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
+    if @article.save
+      redirect_to admin_car_articles_path(@car, @arcile), notice: 'Article was successfully created.'
+    else
+      render :new
     end
+  end
+
+  def destroy
+    # Ну и все остальные методы
+    # Обрати внимание на окончания путей с (s) или без
   end
 
   private

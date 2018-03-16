@@ -1,0 +1,4 @@
+h1= "Latest #{ @car.full_name } news"
+ul
+  - @car.articles.each do |a|
+    li= link_to a.title, admin_car_article_path(@car, a)

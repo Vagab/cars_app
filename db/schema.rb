@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180314172455) do
 
-  create_table "admin_cars", force: :cascade do |t|
-    t.string "manufactuture"
-    t.string "model"
-    t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
