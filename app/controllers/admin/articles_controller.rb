@@ -20,16 +20,18 @@ class Admin::ArticlesController < ApplicationController
     @article = @car.articles.new(article_params)
 
     if @article.save
-      redirect_to admin_car_articles_path(@car, @arcile), notice: 'Article was successfully created.'
+      redirect_to admin_car_articles_path(@car, @article), notice: 'Article was successfully created.'
     else
       render :new
     end
   end
 
   def destroy
-    # Ну и все остальные методы
-    # Обрати внимание на окончания путей с (s) или без
-  end
+    @car = Car.find(params[:car_id])
+    @article.destroy
+    redirect_to admin_car_articles_path(@car)
+  end
+
 
   private
 
