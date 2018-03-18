@@ -30,9 +30,14 @@ class Admin::ArticlesController < ApplicationController
     redirect_to admin_car_articles_path(@car)
   end
 
+  def edit
+    @car = Car.find(params[:car_id])
+    @article = Article.find(params[:id])
+  end
+
   def update
     @car = Car.find(params[:car_id])
-    if @article.update(car_params)
+    if @article.update(article_params)
       redirect_to admin_car_articles_path(@car, @article), notice: 'Article was successfully updated.'
     else
       render :edit
