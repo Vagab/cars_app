@@ -1,9 +1,8 @@
 class Admin::ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_article
+  
   def show
     @car = Car.find(params[:car_id])
-    @article = Article.find(params[:id])
   end
 
   def new
@@ -27,9 +26,9 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def destroy
-    @car = Car.find(params[:car_id])
-    @article.destroy
-    redirect_to admin_car_articles_path(@car)
+    @car = Car.find(params[:car_id])
+    @article.destroy
+    redirect_to admin_car_article_path(@car)
   end
 
 
