@@ -1,21 +1,22 @@
 class Admin::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_car
 
   def show
-    @car = Car.find(params[:car_id])
+    # @car = Car.find(params[:car_id])
   end
 
   def new
-    @car = Car.find(params[:car_id])
+    # @car = Car.find(params[:car_id])
     @article = Article.new
   end
 
   def index
-    @car = Car.includes(:articles).find(params[:car_id])
+    # @car = Car.includes(:articles).find(params[:car_id])
   end
 
   def create
-    @car = Car.find(params[:car_id])
+    # @car = Car.find(params[:car_id])
     @article = @car.articles.new(article_params)
     if @article.save
       redirect_to admin_car_articles_path(@car, @article), notice: 'Article was successfully created.'
@@ -25,14 +26,19 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def destroy
-    @car = Car.find(params[:car_id])
+    # @car = Car.find(params[:car_id])
     @article.destroy
     redirect_to admin_car_articles_path(@car)
   end
 
+  def edit
+    # @car = Car.find(params[:car_id])
+    # @article = Article.find(params[:id])
+  end
+
   def update
-    @car = Car.find(params[:car_id])
-    if @article.update(car_params)
+    # @car = Car.find(params[:car_id])
+    if @article.update(article_params)
       redirect_to admin_car_articles_path(@car, @article), notice: 'Article was successfully updated.'
     else
       render :edit
@@ -43,6 +49,10 @@ class Admin::ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body)
+  end
+
+  def set_car
+    @car = Car.find(params[:car_id])
   end
 
   def set_article

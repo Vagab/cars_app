@@ -1,6 +1,7 @@
 h1
   |
-    Editing Car
+    Edit Article
 
-li= render 'form', article: @article
-li= link_to 'Back', admin_car_article_path(@car, @article)
+= render 'form', article: @article, car: @car
+
+= link_to 'Back', admin_car_articles_path(@car)
