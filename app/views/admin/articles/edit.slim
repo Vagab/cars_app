@@ -1,0 +1,7 @@
+h1
+  |
+    Editing Car
+
+li= render 'form', article: @article
+li= link_to 'Show', @article
+li= link_to 'Back', admin_car_articles_path(@car)
