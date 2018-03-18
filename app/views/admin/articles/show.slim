@@ -3,6 +3,6 @@ p= @article.body
 
 = link_to 'Back', admin_car_articles_path(@car)
 br
-= link_to 'Edit', '#'
+= link_to 'Edit', edit_admin_car_article_path(@car, @article)
 br
 = link_to 'Destroy', admin_car_article_path(@car, @article), method: :delete, data: { confirm: 'Are you sure?' }

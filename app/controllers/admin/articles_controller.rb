@@ -1,6 +1,6 @@
 class Admin::ArticlesController < ApplicationController
-  before_action :set_article
-  
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
   def show
     @car = Car.find(params[:car_id])
   end
@@ -17,7 +17,6 @@ class Admin::ArticlesController < ApplicationController
   def create
     @car = Car.find(params[:car_id])
     @article = @car.articles.new(article_params)
-
     if @article.save
       redirect_to admin_car_articles_path(@car, @article), notice: 'Article was successfully created.'
     else
@@ -28,9 +27,17 @@ class Admin::ArticlesController < ApplicationController
   def destroy
     @car = Car.find(params[:car_id])
     @article.destroy
-    redirect_to admin_car_article_path(@car)
-  end
+    redirect_to admin_car_articles_path(@car)
+  end
 
+  def update
+    @car = Car.find(params[:car_id])
+    if @article.update(car_params)
+      redirect_to admin_car_articles_path(@car), notice: 'Article was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   private
 
@@ -41,5 +48,4 @@ class Admin::ArticlesController < ApplicationController
   def set_article
     @article = Article.find(params[:id])
   end
-
 end
