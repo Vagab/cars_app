@@ -1,9 +1,9 @@
-h2
-  |
-    Latest Articles
-= link_to "Back", cars_path
+h1= "Latest #{ @car.full_name } news"
 <br/>
 - @articles.each do |a|
-  li= "#{a.title}"
+  li= a.title
   <br/>
-  = "#{a.body}"
+  =a.body
+<br/>
+<br/>
+= link_to "Back", cars_path
