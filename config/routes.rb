@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cars, only: [:index, :show]
-  resources :articles, only: [:show]
+  resources :cars, only: [:index, :show] do
+    resources :articles, only: [:show, :index]
+  end
   root 'cars#index'
 end
