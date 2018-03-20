@@ -1,6 +1,8 @@
 h2
   |
     Latest Articles
+= link_to "Back", cars_path
+<br/>
 - @articles.each do |a|
   li= "#{a.title}"
   <br/>
