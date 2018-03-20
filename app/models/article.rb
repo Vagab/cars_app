@@ -3,8 +3,4 @@ class Article < ApplicationRecord
 
   validates :title, :body, presence: true
 
-  def full_aricle
-    [self.title, self.body].join(' ')
-  end
-
 end
