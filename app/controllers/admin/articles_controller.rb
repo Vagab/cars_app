@@ -4,6 +4,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def show
     # @car = Car.find(params[:car_id])
+    @image = @article.images.new
   end
 
   def new

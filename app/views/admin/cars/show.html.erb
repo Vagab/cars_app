@@ -15,6 +15,21 @@
   <%= @car.year %>
 </p>
 
+<%= form_for @image, url: admin_images_url, html: { multipart: true } do |f| %>
+  <%= f.file_field :data %>
+  <%= f.hidden_field :imageable_type %>
+  <%= f.hidden_field :imageable_id %>
+  <%= f.submit "Create" %>
+<% end %>
+
+<% @car.images.each do |i| %>
+  <% if i.persisted? %>
+    <%= image_tag i.data.url(:thumb) %>
+    <%= link_to "delete", admin_image_path(i), method: :delete %>
+  <% end %>
+  <br>
+<% end %>
+
 <%= link_to 'Add article', new_admin_car_article_path(@car) %> |
 <%= link_to 'Edit', edit_admin_car_path(@car) %> |
 <%= link_to 'Back', admin_cars_path %> |

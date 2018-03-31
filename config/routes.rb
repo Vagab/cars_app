@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :cars do
       resources :articles
     end
+    resources :images, only: [:destroy, :create]
   end
 
   resources :cars, only: [:index, :show] do
