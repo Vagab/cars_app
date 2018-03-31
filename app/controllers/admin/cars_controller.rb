@@ -1,8 +1,8 @@
-class Admin::CarsController < ApplicationController
-  before_action :set_car, only: [:show, :edit, :update, :destroy]
+class Admin::CarsController < Admin::BaseController
+  before_action :set_car, only: y[:show, :edit, :update, :destroy]
 
   def index
-    @cars = Car.all
+    @cars = Car.order("id").page(params[:page]).per(5)
   end
 
   def show
