@@ -2,7 +2,8 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cars = Car.all
+    @q = Car.ransack(params[:q])
+    @cars = @q.result.includes(:articles).page(params[:page]).per(5)
   end
 
   def show

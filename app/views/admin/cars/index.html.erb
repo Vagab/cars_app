@@ -12,6 +12,15 @@
     </tr>
   </thead>
 
+  <%= search_form_for @q do |f| %>
+
+  <%= f.label :model_or_year_or_manufacture_or_articles_title_cont %>
+  <%= f.search_field :model_or_year_or_manufacture_or_articles_title_cont %>
+
+  <%= f.submit %>
+
+<% end %>
+
   <tbody>
     <% @cars.each do |car| %>
       <tr>

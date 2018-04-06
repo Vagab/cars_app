@@ -9,6 +9,7 @@ gem 'rails', '~> 5.1.4'
 gem 'pry-byebug'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem "figaro"
