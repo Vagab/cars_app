@@ -1,4 +1,4 @@
 # README
 
 
-Simple web-site from rubyonrailstutorial.org
+Simple web-site for editing and creating different aritcles(in my situation - cars)
